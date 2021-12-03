@@ -2,10 +2,8 @@ package day2
 
 import java.io.File
 
-private const val INPUT_PATH = "src\\main\\kotlin\\day2\\day2.txt"
-
 fun main() {
-    val boxes = File(INPUT_PATH)
+    val boxes = File("src\\main\\kotlin\\day2\\day2.txt")
         .readLines()
         .map { stringDimension ->
             val (length, width, height) = stringDimension.split("x").map {it.toInt()}

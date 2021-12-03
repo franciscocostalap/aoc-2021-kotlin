@@ -9,7 +9,7 @@ fun main(){
         .mapLines { it.toInt() }
 
     val part1Solution: Int = depths.countIncreases()
-    val triplesSum = depths.windowed(3, 1){ tripleList -> tripleList.sum() }
+    val triplesSum = depths.windowed(3){ tripleList -> tripleList.sum() }
     val part2Solution = triplesSum.countIncreases()
 
     println("Part1: $part1Solution")
