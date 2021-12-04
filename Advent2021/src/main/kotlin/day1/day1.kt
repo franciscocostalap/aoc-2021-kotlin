@@ -1,12 +1,11 @@
 package day1
 
+import getFile
 import mapLines
-import java.io.File
 
 
 fun main(){
-    val depths = File("src\\main\\kotlin\\day1\\day1.txt")
-        .mapLines { it.toInt() }
+    val depths = getFile(1).mapLines { it.toInt() }
 
     val part1Solution: Int = depths.countIncreases()
     val triplesSum = depths.windowed(3){ tripleList -> tripleList.sum() }

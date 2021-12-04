@@ -1,10 +1,9 @@
 package day1
 
-import java.io.File
+import getFile
 
 fun main(){
-    val input = File("src\\main\\kotlin\\day1\\day1.txt"
-    ).readText().trim()
+    val input = getFile(1).readText().trim()
     val part1Solution = solution(input)
     val part2Solution = solution(input, -1)
     println("Part1: $part1Solution")

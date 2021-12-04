@@ -1,12 +1,11 @@
 package day5
 
-import java.io.File
-import java.util.*
+import getFile
+import mapLines
 
 
 fun main(){
-    val inputStrings = File("src\\main\\kotlin\\day5\\day5.txt")
-        .readLines().map { it.trim() }
+    val inputStrings = getFile(5).mapLines { it.trim() }
 
     val part1Solution = inputStrings.count(String::isNice1)
     val part2Solution = inputStrings.count(String::isNice2)

@@ -1,6 +1,6 @@
 package day3
 
-import java.io.File
+import getFile
 
 data class Direction(val dx: Int, val dy: Int)
 
@@ -13,12 +13,12 @@ fun Direction(directionChar: Char) =
         else -> error("Invalid direction input.")
     }
 
-operator fun SantaState.plus(dir: Direction) = copy(x + dir.dx, y+dir.dy)
+operator fun SantaState.plus(dir: Direction) = copy(x=x + dir.dx,y=y+dir.dy)
 
 data class SantaState(val x: Int, val y: Int)
 
 fun main() {
-    val directions = File("src\\main\\kotlin\\day3\\day3.txt")
+    val directions = getFile(3)
         .readText().map { Direction(it) }
     // Part1
     val santa = SantaState(0, 0)
@@ -30,8 +30,8 @@ fun main() {
     val part2Solution = santa.deliverPresents(santaDirections)
         .union(robotSanta.deliverPresents(robotDirections)).size
 
-    println("Part1: ${part1Solution}")
-    println("Part2: ${part2Solution}")
+    println("Part1: $part1Solution")
+    println("Part2: $part2Solution")
 
 }
 

@@ -19,8 +19,10 @@ enum class LightState{
     ON, OFF
 }
 
+operator fun LightState.not(): LightState =
+    if(this == LightState.ON) LightState.OFF else LightState.ON
+
+
 data class Light(val state: LightState, val brightness: Int)
 
 operator fun LightMatrix.get(position: Position): Light = this[position.line][position.column]
-
-fun LightMatrix.print() = forEach(::println)

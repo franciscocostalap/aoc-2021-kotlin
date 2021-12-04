@@ -1,11 +1,11 @@
 package day2
 
-import java.io.File
+import getFile
+import mapLines
 
 fun main() {
-    val boxes = File("src\\main\\kotlin\\day2\\day2.txt")
-        .readLines()
-        .map { stringDimension ->
+    val boxes = getFile(2)
+        .mapLines { stringDimension ->
             val (length, width, height) = stringDimension.split("x").map {it.toInt()}
             Present(length, width, height)
         }

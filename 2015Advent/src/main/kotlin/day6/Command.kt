@@ -12,7 +12,7 @@ private fun CommandType.getState(matrix: LightMatrix, from: Position): LightStat
     when(this){
         CommandType.ON -> LightState.ON
         CommandType.OFF -> LightState.OFF
-        CommandType.TOGGLE -> if(matrix[from].state == LightState.ON) LightState.OFF else LightState.ON
+        CommandType.TOGGLE -> !matrix[from].state
     }
 
 

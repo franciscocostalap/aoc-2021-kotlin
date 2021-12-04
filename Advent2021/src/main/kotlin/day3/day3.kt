@@ -1,9 +1,8 @@
 package day3
 
-import java.io.File
+import getFile
 
-val binaryNumbers = File("src/main/kotlin/day3/day3.txt")
-        .readLines()
+val binaryNumbers = getFile(3).readLines()
 val bitIndices = binaryNumbers.first().indices
 
 fun main(){
@@ -12,8 +11,8 @@ fun main(){
     }.stringed()
     val epsilonRate = gammaRateString.binaryInverted().toBinaryInt()
 
-    val oxygenGeneratorRate = getRating(true)
-    val c02ScrubberRate = getRating(false)
+    val oxygenGeneratorRate = getRating(mostNLessCommon = true)
+    val c02ScrubberRate = getRating(mostNLessCommon = false)
 
     val part1Solution = gammaRateString.toBinaryInt() * epsilonRate
     val part2Solution = c02ScrubberRate * oxygenGeneratorRate
@@ -22,12 +21,12 @@ fun main(){
     println("Part2 : $part2Solution")
 }
 
-fun String.binaryInverted() = map { if(it == '1') '0' else '1' }.stringed()
+private fun String.binaryInverted() = map { if(it == '1') '0' else '1' }.stringed()
 
-fun String.toBinaryInt() = toInt(2)
+private fun String.toBinaryInt() = toInt(2)
 
-fun getRating(mostNLessCommon: Boolean): Int {
-    return bitIndices.fold(binaryNumbers){ listAccumulator, position ->
+private fun getRating(mostNLessCommon: Boolean): Int =
+    bitIndices.fold(binaryNumbers){ listAccumulator, position ->
         if(listAccumulator.size == 1) return@fold listAccumulator
         val currentPair = listAccumulator.getFrequencyPair(position)
         val mostOrLessCondition =
@@ -41,24 +40,24 @@ fun getRating(mostNLessCommon: Boolean): Int {
                     else '0'
         }
     }.single().toBinaryInt()
-}
 
-fun List<Char>.stringed() = joinToString("")
 
-fun List<String>.getFrequencyPairs(): List<Pair<Int, Int>> =
+private fun List<Char>.stringed() = joinToString("")
+
+private fun List<String>.getFrequencyPairs(): List<Pair<Int, Int>> =
     frequencyList('1').zip(frequencyList('0'))
 
-fun List<String>.getFrequencyPair(position: Int) =
+private fun List<String>.getFrequencyPair(position: Int): Pair<Int, Int> =
     getFrequency(position, '1') to getFrequency(position, '0')
 
-fun List<String>.getFrequency(position: Int, digit: Char) =
+private fun List<String>.getFrequency(position: Int, digit: Char): Int =
     count{ string ->
         string[position] == digit
     }
 
-fun List<String>.frequencyList(digit:Char): List<Int>{
-    return bitIndices.map { position ->
+private fun List<String>.frequencyList(digit:Char): List<Int> =
+    bitIndices.map { position ->
         getFrequency(position, digit)
     }
-}
+
 
