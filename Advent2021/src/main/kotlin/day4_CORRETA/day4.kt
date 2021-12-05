@@ -1,4 +1,4 @@
-package day4
+package day4_CORRETA
 
 import getFile
 
@@ -15,7 +15,7 @@ fun BingoBoard(lines: List<String>): BingoBoard{
     val bingoBoard = lines.map {numberLine ->
         numberLine.split(" ")
         .mapNotNull {numberString ->
-            val value = numberString.ifBlank{null}?.trim()?.toInt()
+            val value = numberString.toIntOrNull()
             value?.let {checkedValue -> BingoNumber(checkedValue, false) }
         }
     }
@@ -32,12 +32,7 @@ fun main(){
         if(winners.size > previousWinnerSize) numberDrawn to winners.last()
         else null
     }
-
-    fun solution(pair: Pair<Int, BingoBoard>): Int {
-        val sum = pair.second.getUnmarked().sum()
-        val winnerDraw = pair.first
-        return sum * winnerDraw
-    }
+    fun solution(pair: Pair<Int, BingoBoard>): Int = pair.second.getUnmarked().sum() * pair.first
     val part1Solution = solution(winnersPairs.first())
     val part2Solution = solution(winnersPairs.last())
     println("Part1: $part1Solution")
@@ -45,9 +40,9 @@ fun main(){
 }
 
 fun Game.makePlay(number: Int): Game{
-    val newBoard = boards.map{ it.mark(number)}
-    val (winners, stillPlaying) = newBoard.partition(BingoBoard::hasWon)
-    return Game(stillPlaying, this.winners+winners)
+    val newBoards = boards.map{ it.mark(number) }
+    val (winnersFound, stillPlaying) = newBoards.partition(BingoBoard::hasWon)
+    return Game(stillPlaying, this.winners+winnersFound)
 }
 
 fun BingoBoard.mark(number: Int): BingoBoard = BingoBoard(

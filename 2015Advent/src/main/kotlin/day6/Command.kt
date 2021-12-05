@@ -21,8 +21,8 @@ fun Command.execute(matrix: LightMatrix){
         (from.column..to.column).forEach{ column ->
             val currentLight = matrix[line][column]
             matrix[line][column] = currentLight.copy(
-                type.getState(matrix, Position(line, column)),
-                max(0, currentLight.brightness + type.deltaBrightness)
+                state = type.getState(matrix, Position(line, column)),
+                brightness = max(0, currentLight.brightness + type.deltaBrightness)
             )
         }
     }

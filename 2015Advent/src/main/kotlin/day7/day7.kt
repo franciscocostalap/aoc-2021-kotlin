@@ -58,7 +58,7 @@ val test = listOf(
 fun main() {
     val operations = getFile(7).mapLines(BitwiseOperation::parse)
     //val operations = test.map(BitwiseOperation::parse)
-    val part1Solution = operations.inferSignal("a") ?: error("Wrong Solution!")
+    val part1Solution = operations.inferSignal("a") ?: error("No Solution!")
     // Part2
     wireMap.resetValues()
     wireMap["b"] = part1Solution
