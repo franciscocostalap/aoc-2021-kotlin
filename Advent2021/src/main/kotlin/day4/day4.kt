@@ -1,4 +1,4 @@
-package day4_CORRETA
+package day4
 
 import getFile
 
