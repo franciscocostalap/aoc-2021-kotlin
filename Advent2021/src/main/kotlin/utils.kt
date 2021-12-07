@@ -9,3 +9,12 @@ fun <T>File.mapLines(transform: (String) -> T ): List<T> {
 }
 
 fun getFile(day:Int) = File("src/main/kotlin/day$day/day$day.txt")
+
+fun getTest(day: Int) = File("src/main/kotlin/day$day/day${day}Test.txt")
+
+fun <T>part1(value: T) = println("Part1: $value")
+
+fun <T> part2(value: T) = println("Part2: $value")
+
+
+

@@ -9,3 +9,5 @@ fun <T>File.mapLines(transform: (String) -> T ): List<T> {
 }
 
 fun getFile(day:Int) = File("src/main/kotlin/day$day/day$day.txt")
+
+

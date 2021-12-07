@@ -55,7 +55,7 @@ import java.text.SimpleDateFormat
  *
  * @author Francisco Costa 2021
  */
-class AOCChallengeTemplateBuilder(private val day: Int, private val year:Int) {
+class AOCTemplateBuilder(private val day: Int, private val year:Int) {
 
     companion object {
         private const val COULD_NOT_REACH = "Could not reach AOC."
@@ -78,7 +78,7 @@ class AOCChallengeTemplateBuilder(private val day: Int, private val year:Int) {
         val titleAndArticle = document.select("article")[0].wholeText()
         val title = titleAndArticle.substringAfter("---").substringBefore("---")
         val article = System.lineSeparator() + titleAndArticle.substringAfter("---")
-            .substringAfter("---")
+                                                              .substringAfter("---")
         return title + article
     }
 
@@ -139,7 +139,7 @@ private suspend fun fetch(uri: String): String? {
 
 fun main(){
     try {
-        AOCChallengeTemplateBuilder(7, 2021)
+        for(i in 1..25) AOCTemplateBuilder(i, 2015)
     } catch (error: IllegalStateException) {
         println("Error: ${error.message}")
     }catch (httpError: HttpStatusException){

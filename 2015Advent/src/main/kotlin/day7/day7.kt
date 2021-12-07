@@ -2,6 +2,7 @@ package day7
 
 import getFile
 import mapLines
+import org.jsoup.HttpStatusException
 
 val wireMap = mutableMapOf<Id, Int?>()
 typealias Id = String

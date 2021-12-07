@@ -1,7 +1,16 @@
 package day%d
 
 import getFile
+import getTest
+import part1
+import part2
+
+private const val DEBUG = true
+private const val DAY = %d
 
 fun main(){
-    val input = getFile(%d)
+    val input = if(DEBUG) getTest(DAY) else getFile(DAY)
+
+    part1(0)
+    part2(0)
 }

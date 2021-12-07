@@ -41,8 +41,7 @@ private enum class LineType{
 
 private fun Line(string: String): Line {
     // 0,9 -> 5,9
-    val firstPos = string.substringBefore(" ->")
-    val secondPos = string.substringAfter("-> ")
+    val (firstPos, secondPos) = string.split(" -> ")
     return Line(Position(firstPos), Position(secondPos))
 }
 
@@ -83,8 +82,8 @@ private fun Grid.markVector(vector: Line) {
     var absX = 0
     var absY = 0
     while(absX <= absDir.dx || absY <= absDir.dy){
-        val currY = from.y+(absY*yFactor)
-        val currX = from.x+(absX*xFactor)
+        val currY = from.y+ absY*yFactor
+        val currX = from.x+ absX*xFactor
         this[currY][currX]++
         absX++
         absY++
