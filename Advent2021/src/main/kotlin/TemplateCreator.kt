@@ -55,7 +55,7 @@ import java.text.SimpleDateFormat
  *
  * @author Francisco Costa 2021
  */
-class AOCChallengeTemplateBuilder(private val day: Int, private val year:Int) {
+class AOCChallengeTemplateCreator(private val day: Int, private val year:Int){
 
     companion object {
         private const val COULD_NOT_REACH = "Could not reach AOC."
@@ -65,7 +65,13 @@ class AOCChallengeTemplateBuilder(private val day: Int, private val year:Int) {
     private val challengeAvailable = checkChallengeTime(day)
 
     init {
-        buildTemplate()
+        try {
+            buildTemplate()
+        } catch (error: IllegalStateException) {
+            println("Error: ${error.message}")
+        }catch (httpError: HttpStatusException){
+            println("Could not reach AOC.")
+        }
     }
 
     private suspend fun fetchChallengeInput(): String =
@@ -134,15 +140,5 @@ private suspend fun fetch(uri: String): String? {
     return runBlocking {
         val response = withContext(Dispatchers.IO) { client.send(request, HttpResponse.BodyHandlers.ofString()) }
         response.body()
-    }
-}
-
-fun main(){
-    try {
-        AOCChallengeTemplateBuilder(7, 2021)
-    } catch (error: IllegalStateException) {
-        println("Error: ${error.message}")
-    }catch (httpError: HttpStatusException){
-        println("Could not reach AOC.")
     }
 }

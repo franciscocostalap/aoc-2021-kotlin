@@ -2,15 +2,23 @@ package day%d
 
 import getFile
 import getTest
+import checkTest
 import part1
 import part2
 
-private const val DEBUG = true
+private const val TEST = true
 private const val DAY = %d
 
 fun main(){
-    val input = if(DEBUG) getTest(DAY) else getFile(DAY)
+    val input = if(TEST) getTest(DAY) else getFile(DAY)
 
+    // Your code
+
+
+    if(TEST){
+        checkTest(expected=0, actual=0, "part1") // part1
+        checkTest(expected=0, actual=0, "part2") // part2
+    }
     part1(0)
     part2(0)
 }

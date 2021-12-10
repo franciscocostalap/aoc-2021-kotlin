@@ -1,4 +1,4 @@
-package day7_craque
+package day7
 
 import getFile
 import getTest
