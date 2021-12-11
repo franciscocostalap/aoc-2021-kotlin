@@ -21,16 +21,13 @@ import java.text.SimpleDateFormat
  *
  * How to use:
  *
- * Change to the day you want on AOCTemplateBuilder instantiation in the main function.
+ * Change to the day you want on AOCTemplateBuilder instantiation in the "build.kt" main function.
  *
- * Change to the year you want on AOCTemplateBuilder instantiation
+ * Change to the year you want on AOCTemplateBuilder instantiation "build.kt" main function.
  *
  * Create an environment variable named TOKEN with your advent of code session ID.
  *
- * Change the name
- *
- * Run this script.
- *
+ * Run build.kt script.
  *
  *
  * How to get your AOC session ID:
