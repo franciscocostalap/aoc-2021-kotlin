@@ -1,4 +1,4 @@
-package day5
+package day05
 
 import getFile
 import mapLines

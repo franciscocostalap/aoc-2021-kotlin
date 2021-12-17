@@ -1,4 +1,4 @@
-package day3
+package day03
 
 import getFile
 
