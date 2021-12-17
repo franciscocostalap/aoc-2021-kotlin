@@ -48,7 +48,7 @@ fun Pos.getNeighbours(heightMatrix: HeightMatrix): List<Pos>{
     val bottom = heightMatrix.getOrNull(line+1, column)
     val left = heightMatrix.getOrNull(line, column-1)
     val right = heightMatrix.getOrNull(line, column+1)
-    return listOf(top, left, right, bottom).mapNotNull { it }
+    return listOfNotNull(top, left, right, bottom)
 }
 
 fun Pos.isLowPoint(heightMatrix: HeightMatrix) = getNeighbours(heightMatrix).all { neigh -> neigh.height > this.height }

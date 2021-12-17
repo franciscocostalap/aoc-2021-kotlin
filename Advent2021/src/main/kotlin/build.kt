@@ -1,3 +1,3 @@
 fun main() {
-    AOCChallengeTemplateCreator(10, 2021)
+    AOCChallengeTemplateCreator(12, 2021)
 }

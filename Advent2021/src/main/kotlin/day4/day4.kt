@@ -63,7 +63,7 @@ fun BingoBoard.getUnmarked(): List<BingoNumber> = board.flatten().filterNot{it.m
 
 fun List<BingoNumber>.sum() = sumOf { it.value }
 
-fun String.parseInput(): Pair<List<Int>, List<BingoBoard>>{
+private fun String.parseInput(): Pair<List<Int>, List<BingoBoard>>{
     val components = split("$n$n")
     val numbersDrawn = components.first().split(",").map(String::toInt)
     val boardsAsListsOfStrings = components.drop(1).map { boardString -> boardString.split(n) }

@@ -5,7 +5,7 @@ private class AOCTestException(message: String): Exception(message)
 
 fun <T>File.mapLines(transform: (String) -> T ): List<T> {
     val result = ArrayList<T>()
-    forEachLine(Charsets.UTF_8) { result.add(transform(it)); }
+    forEachLine(Charsets.UTF_8) { result.add(transform(it)) }
     return result
 }
 
@@ -23,6 +23,21 @@ fun <T>checkTest(expected: T, actual: T, title: String){
         """Test $title failed expected: "$expected" but was "$actual" """
     )
 }
+
+/**
+ * Returns a list containing the results of applying the
+ * given [transform] function to all of the combinations
+ * of elements from this iterable and [other] iterable.
+ *
+ * Only elements from distinct iterables are combined.
+ */
+fun <T, U, V> Iterable<T>.combinations(other: Iterable<U>, transform:(T, U) -> V):List<V>
+        = flatMap { thisIt ->
+    other.map { otherIt -> transform(thisIt, otherIt) }
+}
+
+val lineSeparator = System.lineSeparator()
+
 
 
 
